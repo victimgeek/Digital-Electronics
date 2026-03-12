@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Electronics – GPS Clocks, LED Displays | Kolkata</title>
+<meta name="description" content="ISO 9001:2008 certified manufacturer of GPS Clocks, Tower Clocks, Bank Token Displays, Exchange Rate Displays, LED Lighting – Kolkata since 1990.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#07111f;--navy2:#0d1e35;--navy3:#122444;--accent:#e8a020;--accent2:#f5c842;--teal:#00c2d4;--white:#f0f4fa;--gray:#7a90a8;--text:#b8cede;--border:rgba(255,255,255,0.07);--card:rgba(13,30,53,0.95);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;line-height:1.6;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+/* NAVBAR */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:9000;background:rgba(7,17,31,0.97);border-bottom:2px solid var(--accent);backdrop-filter:blur(12px);box-shadow:0 2px 30px rgba(0,0,0,.6);}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;cursor:pointer;}
+.nav-logo{width:46px;height:46px;border-radius:50%;border:2px solid var(--accent);overflow:hidden;flex-shrink:0;}
+.nav-logo img{width:100%;height:100%;object-fit:cover;}
+.brand-name{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:var(--white);letter-spacing:.5px;line-height:1.15;}
+.brand-name span{color:var(--accent);}
+.brand-tag{font-size:9.5px;color:var(--teal);letter-spacing:2.5px;text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-links a{font-family:'Oswald',sans-serif;font-size:13.5px;color:var(--text);padding:7px 16px;border-radius:3px;letter-spacing:1.5px;text-transform:uppercase;transition:color .22s;position:relative;cursor:pointer;}
+.nav-links a::after{content:'';position:absolute;bottom:3px;left:16px;right:16px;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .22s;transform-origin:left;}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-links a.active{color:var(--accent);}
+.nav-cta{background:var(--accent)!important;color:var(--navy)!important;font-weight:600!important;border-radius:4px!important;padding:8px 20px!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--accent2)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;cursor:pointer;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(7,17,31,.98);border-bottom:2px solid var(--accent);padding:16px 24px;z-index:8999;flex-direction:column;gap:4px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Oswald',sans-serif;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);padding:12px 16px;border-radius:4px;transition:background .2s,color .2s;cursor:pointer;}
+.mobile-menu a:hover,.mobile-menu a.active{background:rgba(232,160,32,.1);color:var(--accent);}
+
+/* PAGE SYSTEM */
+.page{display:none;padding-top:68px;min-height:100vh;}
+.page.active{display:block;}
+
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--navy);font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 30px;border:none;border-radius:4px;transition:all .24s;cursor:pointer;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,160,32,.35);}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--white);font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:13px 30px;border:1px solid rgba(255,255,255,.25);border-radius:4px;transition:all .24s;cursor:pointer;text-decoration:none;}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px);}
+
+/* SECTION UTILS */
+.section-wrap{max-width:1280px;margin:0 auto;padding:80px 32px;}
+.section-head{text-align:center;margin-bottom:56px;}
+.section-tag{display:inline-block;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+.section-tag::before,.section-tag::after{content:'—';margin:0 8px;opacity:.4;}
+.section-title{font-family:'Rajdhani',sans-serif;font-size:clamp(26px,4vw,42px);font-weight:700;color:var(--white);line-height:1.15;margin-bottom:14px;}
+.section-title span{color:var(--accent);}
+.section-sub{font-size:15px;color:var(--gray);max-width:540px;margin:0 auto;line-height:1.75;}
+.page-strip{background:linear-gradient(135deg,var(--navy2),var(--navy3));border-bottom:1px solid rgba(232,160,32,.18);padding:48px 32px 40px;text-align:center;}
+.page-strip h1{font-family:'Rajdhani',sans-serif;font-size:clamp(30px,5vw,46px);font-weight:700;color:var(--white);margin-bottom:8px;}
+.page-strip h1 span{color:var(--accent);}
+.page-strip p{font-size:15px;color:var(--gray);}
+
+/* HERO */
+.hero{position:relative;min-height:calc(100vh - 68px);background:linear-gradient(140deg,#07111f 0%,#0d1e35 45%,#122444 100%);display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,194,212,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,194,212,.04) 1px,transparent 1px);background-size:56px 56px;animation:gridScroll 22s linear infinite;}
+@keyframes gridScroll{0%{transform:translateY(0);}100%{transform:translateY(56px);}}
+.hero-glow{position:absolute;width:500px;height:400px;top:10%;right:8%;border-radius:50%;background:radial-gradient(ellipse,rgba(0,194,212,.07),transparent 70%);pointer-events:none;}
+.hero-content{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:60px 32px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,160,32,.12);border:1px solid rgba(232,160,32,.35);border-radius:30px;padding:6px 18px;margin-bottom:22px;font-family:'Oswald',sans-serif;font-size:11px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;}
+.hero-badge::before{content:'✓';background:var(--accent);color:var(--navy);width:17px;height:17px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex-shrink:0;}
+.hero-title{font-family:'Rajdhani',sans-serif;font-size:clamp(38px,5.5vw,66px);font-weight:700;line-height:1.04;margin-bottom:20px;}
+.hero-title .t1{color:var(--white);display:block;}
+.hero-title .t2{color:var(--accent);display:block;}
+.hero-title .t3{color:var(--teal);display:block;font-size:.62em;font-weight:400;margin-top:6px;}
+.hero-desc{font-size:15.5px;color:var(--text);line-height:1.8;max-width:480px;margin-bottom:34px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px;}
+.hero-stats{display:flex;border-top:1px solid rgba(255,255,255,.08);padding-top:28px;}
+.stat{flex:1;text-align:center;padding:0 12px;border-right:1px solid rgba(255,255,255,.07);}
+.stat:first-child{padding-left:0;text-align:left;}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;color:var(--accent);line-height:1;}
+.stat-lbl{font-size:11px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+.hero-visual{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.hero-img{border-radius:8px;overflow:hidden;border:1px solid rgba(0,194,212,.18);position:relative;}
+.hero-img img{width:100%;height:100%;object-fit:cover;}
+.hero-img.main{grid-column:span 2;height:200px;}
+.hero-img.sm{height:140px;}
+.hero-img-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(7,17,31,.85));padding:10px 12px 8px;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--white);}
+.hero-float{position:absolute;bottom:-12px;right:-12px;background:var(--teal);color:var(--navy);font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;padding:9px 16px;border-radius:4px;box-shadow:0 4px 18px rgba(0,194,212,.4);}
+
+/* TICKER */
+.ticker-wrap{background:var(--accent);overflow:hidden;padding:9px 0;}
+.ticker-track{display:flex;animation:tickerRun 34s linear infinite;white-space:nowrap;}
+.ticker-item{font-family:'Oswald',sans-serif;font-size:12.5px;font-weight:500;color:var(--navy);letter-spacing:1.2px;text-transform:uppercase;padding:0 36px;display:inline-flex;align-items:center;gap:10px;flex-shrink:0;}
+.ticker-item::before{content:'◆';font-size:7px;}
+@keyframes tickerRun{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* FEATURES BAR */
+.features-bar{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.features-bar-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(4,1fr);}
+.feat-item{padding:28px 20px;display:flex;align-items:center;gap:14px;border-right:1px solid var(--border);transition:background .2s;}
+.feat-item:last-child{border-right:none;}
+.feat-item:hover{background:rgba(0,194,212,.04);}
+.feat-icon{width:48px;height:48px;flex-shrink:0;background:rgba(232,160,32,.09);border:1px solid rgba(232,160,32,.22);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;}
+.feat-text h4{font-family:'Oswald',sans-serif;font-size:14px;font-weight:500;color:var(--white);margin-bottom:3px;}
+.feat-text p{font-size:12px;color:var(--gray);line-height:1.5;}
+
+/* PRODUCT CARDS */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px;}
+.pcard{background:var(--card);border:1px solid rgba(0,194,212,.1);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s;position:relative;}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transition:transform .3s;}
+.pcard:hover{transform:translateY(-6px);border-color:rgba(0,194,212,.3);box-shadow:0 18px 50px rgba(0,0,0,.45);}
+.pcard:hover::before{transform:scaleX(1);}
+.pcard-img{height:200px;overflow:hidden;background:var(--navy3);}
+.pcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.pcard:hover .pcard-img img{transform:scale(1.06);}
+.pcard-body{padding:22px;}
+.pcard-cat{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:7px;}
+.pcard-name{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:9px;line-height:1.2;}
+.pcard-desc{font-size:13px;color:var(--gray);line-height:1.65;margin-bottom:14px;}
+.pcard-feats{list-style:none;margin-bottom:18px;}
+.pcard-feats li{font-size:12.5px;color:var(--text);padding:3.5px 0;display:flex;align-items:flex-start;gap:8px;}
+.pcard-feats li::before{content:'▹';color:var(--accent);font-size:11px;margin-top:1px;flex-shrink:0;}
+.pcard-link{font-family:'Oswald',sans-serif;font-size:13px;font-weight:500;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;background:none;border:none;padding:0;transition:gap .2s;cursor:pointer;}
+.pcard-link:hover{gap:12px;}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:180px 180px;gap:10px;}
+.gallery-cell{border-radius:8px;overflow:hidden;border:1px solid rgba(0,194,212,.14);}
+.gallery-cell img{width:100%;height:100%;object-fit:cover;transition:transform .45s;}
+.gallery-cell:hover img{transform:scale(1.07);}
+.gallery-cell.w2{grid-column:span 2;}
+.gallery-cell.h2{grid-row:span 2;}
+
+/* CLIENTS */
+.clients-strip{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px 32px;}
+.clients-strip-inner{max-width:1280px;margin:0 auto;}
+.clients-label{text-align:center;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gray);margin-bottom:26px;}
+.clients-pills{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.cpill{background:rgba(7,17,31,.9);border:1px solid rgba(255,255,255,.08);border-radius:30px;padding:8px 20px;font-size:13px;color:var(--gray);transition:border-color .2s,color .2s;}
+.cpill:hover{border-color:rgba(232,160,32,.4);color:var(--white);}
+
+/* ABOUT */
+.about-top{max-width:1280px;margin:0 auto;padding:60px 32px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.about-img-wrap{border-radius:10px;overflow:hidden;border:1px solid rgba(0,194,212,.18);height:380px;background:var(--navy3);}
+.about-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.ab-highlights{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0;}
+.hl-card{background:rgba(0,194,212,.05);border:1px solid rgba(0,194,212,.13);border-radius:8px;padding:16px 18px;}
+.hl-num{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:3px;}
+.hl-lbl{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;}
+.cert-strip{display:flex;align-items:center;gap:16px;background:var(--navy2);border:1px solid rgba(0,194,212,.13);border-radius:8px;padding:16px 20px;margin-top:20px;}
+.cert-strip img{height:60px;background:#fff;padding:5px;border-radius:4px;object-fit:contain;}
+.ct-title{font-family:'Oswald',sans-serif;font-size:12px;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.ct-sub{font-size:13px;color:var(--text);}
+.about-specs-wrap{max-width:1280px;margin:0 auto;padding:0 32px 60px;display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.spec-box{background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:28px 30px;}
+.spec-box h3{font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.spec-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13.5px;}
+.spec-row:last-child{border-bottom:none;}
+.sk{color:var(--gray);}
+.sv{color:var(--white);font-weight:600;text-align:right;max-width:55%;}
+.clients-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:28px;}
+.cbadge{background:rgba(13,30,53,.9);border:1px solid rgba(0,194,212,.1);border-radius:6px;padding:13px 16px;font-size:13px;color:var(--text);display:flex;align-items:center;gap:10px;transition:border-color .2s,background .2s;}
+.cbadge:hover{border-color:rgba(232,160,32,.3);}
+.cbadge::before{content:'◆';color:var(--accent);font-size:8px;flex-shrink:0;}
+
+/* PRODUCT DETAIL */
+.detail-wrap{max-width:1280px;margin:0 auto;padding:50px 32px 70px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);margin-bottom:36px;}
+.breadcrumb a{color:var(--teal);cursor:pointer;transition:color .2s;}
+.breadcrumb a:hover{color:var(--accent);}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;}
+.detail-main-img{border-radius:10px;overflow:hidden;border:1px solid rgba(0,194,212,.18);height:340px;background:var(--navy3);}
+.detail-main-img img{width:100%;height:100%;object-fit:cover;transition:opacity .18s ease;}
+.detail-thumbs{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
+.dthumb{width:72px;height:60px;border-radius:6px;overflow:hidden;border:2px solid rgba(0,194,212,.14);cursor:pointer;background:var(--navy3);flex-shrink:0;transition:border-color .2s;}
+.dthumb img{width:100%;height:100%;object-fit:cover;}
+.dthumb:hover{border-color:var(--teal);}
+.dthumb.active{border-color:var(--accent);}
+.d-cat{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;display:block;}
+.detail-info h1{font-family:'Rajdhani',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.2;}
+.detail-desc{font-size:15px;color:var(--text);line-height:1.8;margin-bottom:22px;}
+.feats-label{font-family:'Oswald',sans-serif;font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;}
+.detail-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:28px;}
+.detail-feats li{font-size:13px;color:var(--text);display:flex;align-items:flex-start;gap:8px;padding:9px 12px;background:rgba(0,194,212,.04);border:1px solid rgba(0,194,212,.1);border-radius:5px;}
+.detail-feats li::before{content:'✓';color:var(--accent);font-size:11px;margin-top:1px;flex-shrink:0;}
+.detail-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.sub-products{margin-top:60px;}
+.sub-products h2{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;color:var(--white);margin-bottom:24px;}
+.sub-products h2 span{color:var(--accent);}
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;}
+.sub-card{background:var(--navy2);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color .25s,transform .25s;}
+.sub-card:hover{border-color:rgba(0,194,212,.28);transform:translateY(-4px);}
+.sub-card-img{height:150px;overflow:hidden;background:var(--navy3);display:flex;align-items:center;justify-content:center;}
+.sub-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.sub-card:hover .sub-card-img img{transform:scale(1.05);}
+.sub-card-body{padding:14px 16px;}
+.sub-card-name{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:5px;}
+.sub-card-desc{font-size:12px;color:var(--gray);line-height:1.55;}
+
+/* SPEC TABLE */
+.spec-table{width:100%;border-collapse:collapse;font-size:13px;}
+.spec-table thead tr{background:rgba(232,160,32,.12);border-bottom:2px solid var(--accent);}
+.spec-table th{padding:12px 16px;text-align:left;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--teal);}
+.spec-table th:not(:first-child){text-align:center;}
+.spec-table td{padding:11px 16px;border-bottom:1px solid rgba(255,255,255,.05);}
+.spec-table td:first-child{color:var(--white);font-weight:600;}
+.spec-table td:not(:first-child){color:var(--text);text-align:center;}
+.spec-table .hi{color:var(--accent);font-weight:700;}
+.spec-table tbody tr:hover{background:rgba(0,194,212,.04);}
+
+/* CONTACT */
+.contact-layout{max-width:1280px;margin:0 auto;padding:60px 32px;display:grid;grid-template-columns:1fr 1.45fr;gap:48px;}
+.contact-info h2{font-family:'Rajdhani',sans-serif;font-size:34px;font-weight:700;color:var(--white);margin-bottom:10px;}
+.contact-info h2 span{color:var(--accent);}
+.ci-sub{font-size:15px;color:var(--gray);line-height:1.7;margin-bottom:28px;}
+.ci-item{display:flex;align-items:flex-start;gap:14px;padding:18px;background:var(--navy2);border:1px solid rgba(0,194,212,.1);border-radius:8px;margin-bottom:12px;transition:border-color .2s;}
+.ci-item:hover{border-color:rgba(232,160,32,.28);}
+.ci-icon{width:40px;height:40px;flex-shrink:0;background:rgba(232,160,32,.09);border:1px solid rgba(232,160,32,.22);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:17px;}
+.ci-text h4{font-family:'Oswald',sans-serif;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;}
+.ci-text p{font-size:13.5px;color:var(--text);line-height:1.6;}
+.ci-text a{color:var(--accent);text-decoration:none;}
+.ci-text a:hover{color:var(--accent2);text-decoration:underline;}
+.hours-box{background:rgba(0,194,212,.05);border:1px solid rgba(0,194,212,.14);border-radius:8px;padding:18px;margin-top:16px;}
+.hours-box h4{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;}
+.hr-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:13px;}
+.hr-row:last-child{border-bottom:none;}
+.hr-day{color:var(--gray);}
+.hr-time{color:var(--white);font-weight:600;}
+.cf-wrap{background:var(--navy2);border:1px solid rgba(0,194,212,.11);border-radius:12px;padding:38px;}
+.cf-wrap h3{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.cf-sub{font-size:13.5px;color:var(--gray);margin-bottom:26px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin-bottom:7px;}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(7,17,31,.85);border:1px solid rgba(255,255,255,.09);border-radius:6px;padding:11px 15px;color:var(--white);font-family:'Lato',sans-serif;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,194,212,.1);}
+.form-group textarea{resize:vertical;min-height:116px;}
+.form-group select option{background:var(--navy2);}
+.form-submit{width:100%;background:var(--accent);color:var(--navy);font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px;border:none;border-radius:6px;cursor:pointer;transition:all .24s;margin-top:6px;}
+.form-submit:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,160,32,.4);}
+.form-note{font-size:12px;color:var(--gray);margin-top:10px;line-height:1.7;padding:10px 12px;background:rgba(0,194,212,.04);border-radius:6px;}
+.form-success{background:rgba(0,194,212,.09);border:1px solid var(--teal);border-radius:7px;padding:14px 18px;font-size:14px;color:var(--teal);margin-top:14px;display:none;}
+
+/* FOOTER */
+footer{background:#050d18;border-top:1px solid rgba(232,160,32,.18);padding:48px 32px 28px;}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px;}
+.fb-name{font-family:'Rajdhani',sans-serif;font-size:21px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.fb-name span{color:var(--accent);}
+.fb-cert{font-size:11px;color:var(--teal);letter-spacing:1px;margin-bottom:14px;}
+.fb-desc{font-size:13px;color:var(--gray);line-height:1.72;}
+.fc h4{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--white);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.fc a{display:block;font-size:13px;color:var(--gray);margin-bottom:9px;line-height:1.5;cursor:pointer;transition:color .2s;text-decoration:none;}
+.fc a:hover{color:var(--accent);}
+.fc p{font-size:13px;color:var(--gray);margin-bottom:9px;line-height:1.5;}
+.footer-bottom{max-width:1280px;margin:0 auto;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--gray);flex-wrap:wrap;gap:8px;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr;}
+  .hero-visual{display:none;}
+  .features-bar-inner{grid-template-columns:1fr 1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .about-top,.about-specs-wrap,.contact-layout,.detail-grid{grid-template-columns:1fr;}
+  .detail-feats,.form-row{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:160px;}
+  .gallery-cell.w2,.gallery-cell.h2{grid-column:span 1;grid-row:span 1;}
+  .section-wrap{padding:60px 20px;}
+  .hero-content{padding:50px 20px;}
+  .page-strip{padding:38px 20px 30px;}
+  .detail-wrap{padding:40px 20px 50px;}
+  .cf-wrap{padding:24px 20px;}
+}
+@media(max-width:540px){
+  .features-bar-inner,.footer-inner{grid-template-columns:1fr;}
+  .feat-item{border-right:none;border-bottom:1px solid var(--border);}
+  .products-grid,.sub-grid{grid-template-columns:1fr;}
+  .hero-stats{flex-wrap:wrap;gap:16px;}
+  .stat{flex:none;width:48%;border-right:none;text-align:left;padding:0;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="go('home')">
+      <div class="nav-logo"><img src="images/logo.jpg" alt="Digital Electronics"></div>
+      <div>
+        <div class="brand-name"><span>Digital</span> Electronics</div>
+        <div class="brand-tag">ISO 9001:2008 Certified</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a id="nl-home" class="active" onclick="go('home')">Home</a>
+      <a id="nl-about" onclick="go('about')">About Us</a>
+      <a id="nl-products" onclick="go('products')">Products</a>
+      <a id="nl-contact" class="nav-cta" onclick="go('contact')">Contact Us</a>
+    </div>
+    <button class="hamburger" id="hbg" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a id="ml-home" class="active" onclick="go('home');closeMenu()">Home</a>
+  <a id="ml-about" onclick="go('about');closeMenu()">About Us</a>
+  <a id="ml-products" onclick="go('products');closeMenu()">Products</a>
+  <a id="ml-contact" onclick="go('contact');closeMenu()">Contact Us</a>
+</div>
+
+<!-- ════ HOME ════ -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge">ISO 9001:2008 Certified Manufacturer</div>
+        <h1 class="hero-title">
+          <span class="t1">Precision Digital</span>
+          <span class="t2">Electronics</span>
+          <span class="t3">Manufacturers &amp; Suppliers Since 1990 · Kolkata</span>
+        </h1>
+        <p class="hero-desc">Specialists in GPS Clocks, Tower Clocks, Bank Token Displays, Foreign Exchange Rate Boards, LED Moving Displays and Electronic Components. Trusted by leading organizations across India.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="go('products')">Explore Products →</button>
+          <a href="tel:+919830213946" class="btn-outline">📞 +91 9830213946</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num">35+</div><div class="stat-lbl">Years Exp.</div></div>
+          <div class="stat"><div class="stat-num">4</div><div class="stat-lbl">Product Lines</div></div>
+          <div class="stat"><div class="stat-num">ISO</div><div class="stat-lbl">9001:2008</div></div>
+          <div class="stat"><div class="stat-num">Pan-IN</div><div class="stat-lbl">Coverage</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img main"><img src="product1_files/tower-clock-500x500.jpg" alt="Tower Clock"><div class="hero-img-cap">Tower Clock · Smart Clock Systems</div></div>
+        <div class="hero-img sm"><img src="product2_files/EXchangeratem.JPG" alt="Exchange Rate Board"><div class="hero-img-cap">Exchange Rate Board</div></div>
+        <div class="hero-img sm"><img src="product4_files/6-250x250.jpg" alt="LED Lighting"><div class="hero-img-cap">LED Lighting Range</div></div>
+        <div class="hero-float">Est. 1990 · Kolkata</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker-wrap"><div class="ticker-track">
+    <span class="ticker-item">GPS Clocks &amp; Tower Clocks</span><span class="ticker-item">Bank Token Display Systems</span><span class="ticker-item">Exchange Rate LED Displays</span><span class="ticker-item">Gold &amp; Silver Rate Boards</span><span class="ticker-item">LED Moving Displays</span><span class="ticker-item">Electronic Components</span><span class="ticker-item">LED Lighting Solutions</span><span class="ticker-item">Hoarding Timers</span><span class="ticker-item">ISO 9001:2008 Certified</span>
+    <span class="ticker-item">GPS Clocks &amp; Tower Clocks</span><span class="ticker-item">Bank Token Display Systems</span><span class="ticker-item">Exchange Rate LED Displays</span><span class="ticker-item">Gold &amp; Silver Rate Boards</span><span class="ticker-item">LED Moving Displays</span><span class="ticker-item">Electronic Components</span><span class="ticker-item">LED Lighting Solutions</span><span class="ticker-item">Hoarding Timers</span><span class="ticker-item">ISO 9001:2008 Certified</span>
+  </div></div>
+
+  <div class="features-bar"><div class="features-bar-inner">
+    <div class="feat-item"><div class="feat-icon">🏭</div><div class="feat-text"><h4>In-House Manufacturing</h4><p>All products designed &amp; built at our Kolkata facility</p></div></div>
+    <div class="feat-item"><div class="feat-icon">🛰️</div><div class="feat-text"><h4>GPS Synchronized</h4><p>Atomic-accurate timekeeping via GPS receiver</p></div></div>
+    <div class="feat-item"><div class="feat-icon">🔧</div><div class="feat-text"><h4>Fully Repairable</h4><p>100% indigenous, field-serviceable designs</p></div></div>
+    <div class="feat-item"><div class="feat-icon">📐</div><div class="feat-text"><h4>Custom Built</h4><p>Made to your exact specifications &amp; dimensions</p></div></div>
+  </div></div>
+
+  <section class="section-wrap">
+    <div class="section-head">
+      <div class="section-tag">Our Products</div>
+      <h2 class="section-title">What We <span>Manufacture</span></h2>
+      <p class="section-sub">Four specialized product lines serving banks, offices, factories and public infrastructure across India.</p>
+    </div>
+    <div class="products-grid">
+      <div class="pcard" onclick="gd('clocks')"><div class="pcard-img"><img src="product1_files/tower-clock-500x500.jpg" alt="Tower Clock"></div><div class="pcard-body"><div class="pcard-cat">Category 01</div><div class="pcard-name">Clocks &amp; GPS Systems</div><p class="pcard-desc">Tower Clocks, GPS Master-Slave networks, Calendar Clocks, World Time Zone Displays and Platform Clocks.</p><ul class="pcard-feats"><li>Smart Tower Clock systems</li><li>GPS Master-Slave networks</li><li>Calendar &amp; World Clocks</li><li>Battery backup included</li></ul><button class="pcard-link">View Details →</button></div></div>
+      <div class="pcard" onclick="gd('displays')"><div class="pcard-img"><img src="product2_files/picture-001.jpg" alt="Bank Token Display"></div><div class="pcard-body"><div class="pcard-cat">Category 02</div><div class="pcard-name">Token &amp; LED Displays</div><p class="pcard-desc">Bank Token Queue systems with voice, Exchange Rate boards, Gold &amp; Silver rate displays, LED weigh-scale readouts.</p><ul class="pcard-feats"><li>Voice announcement &amp; alert</li><li>Exchange rate boards</li><li>Gold &amp; Silver rate displays</li><li>LED weigh-scale readout</li></ul><button class="pcard-link">View Details →</button></div></div>
+      <div class="pcard" onclick="gd('components')"><div class="pcard-img"><img src="product3_files/4-500x500.jpg" alt="Electronic Components"></div><div class="pcard-body"><div class="pcard-cat">Category 03</div><div class="pcard-name">Electronic Components</div><p class="pcard-desc">Custom electronic components built to client specifications using latest technology for maximum durability and performance.</p><ul class="pcard-feats"><li>CP210X USB-Serial modules</li><li>Process control boards</li><li>Custom to specifications</li><li>Industrial grade quality</li></ul><button class="pcard-link">View Details →</button></div></div>
+      <div class="pcard" onclick="gd('led')"><div class="pcard-img"><img src="product4_files/6-250x250.jpg" alt="LED Lighting"></div><div class="pcard-body"><div class="pcard-cat">Category 04</div><div class="pcard-name">LED Lighting &amp; Timers</div><p class="pcard-desc">LED Bulbs, Tube Lights, Down Lights, Street Lights, Edge Lit Signs and sign board timers for commercial and industrial use.</p><ul class="pcard-feats"><li>LED Bulbs, Tubes, Down Lights</li><li>LED Street Lights 10–150W</li><li>Hoarding board timers</li><li>50,000+ hour rated life</li></ul><button class="pcard-link">View Details →</button></div></div>
+    </div>
+  </section>
+
+  <section style="background:var(--navy2);padding:70px 32px;border-top:1px solid var(--border);">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="section-head" style="margin-bottom:36px;"><div class="section-tag">Gallery</div><h2 class="section-title">Our Products <span>In Action</span></h2></div>
+      <div class="gallery-grid">
+        <div class="gallery-cell h2 w2"><img src="product1_files/tower-clock-500x500.jpg" alt="Tower Clock"></div>
+        <div class="gallery-cell w2"><img src="product2_files/EXchangeratem.JPG" alt="Exchange Rate Display"></div>
+        <div class="gallery-cell w2"><img src="product2_files/IMG-20140407-WA0000.jpg" alt="Gold Silver Rate Display"></div>
+        <div class="gallery-cell"><img src="product4_files/Bulb.JPG" alt="LED Bulb"></div>
+        <div class="gallery-cell"><img src="product4_files/downlight.JPG" alt="LED Downlight"></div>
+        <div class="gallery-cell"><img src="product3_files/4-500x500.jpg" alt="Electronic Components"></div>
+        <div class="gallery-cell"><img src="product2_files/picture-001.jpg" alt="Token Display"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="clients-strip"><div class="clients-strip-inner">
+    <div class="clients-label">Trusted by leading organizations across India &amp; internationally</div>
+    <div class="clients-pills">
+      <div class="cpill">A&amp;D Japan, Gurgaon</div><div class="cpill">CAS Weighing India Pvt. Ltd.</div><div class="cpill">Hindustan Lever Ltd., Haldia</div><div class="cpill">ITC, Munger</div><div class="cpill">L&amp;T, Kansbhal</div><div class="cpill">Great Electronics, Kolkata</div><div class="cpill">Jay Electronics, Gujarat</div><div class="cpill">Udyogi Plastic, Kolkata</div><div class="cpill">DNS Technology, Orissa</div><div class="cpill">Municipal Office, Bhutan Govt.</div>
+    </div>
+  </div></div>
+
+  <div style="background:linear-gradient(135deg,var(--navy2),var(--navy3));border-top:1px solid var(--border);">
+    <div class="section-wrap" style="text-align:center;">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Ready to <span>Order</span> or Enquire?</h2>
+      <p class="section-sub" style="margin-bottom:32px;">Contact Mr. R.K. Gupta directly — we respond promptly to all inquiries and provide custom quotes.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="go('contact')">📩 Send Enquiry</button>
+        <a href="tel:+919830213946" class="btn-outline">📞 +91 9830213946</a>
+      </div>
+    </div>
+  </div>
+</div><!-- /home -->
+
+<!-- ════ ABOUT ════ -->
+<div class="page" id="page-about">
+  <div class="page-strip"><h1>About <span>Digital Electronics</span></h1><p>ISO 9001:2008 Certified Manufacturer &amp; Supplier — Kolkata, West Bengal, India</p></div>
+  <div class="about-top">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,194,212,.08);border:1px solid rgba(0,194,212,.28);border-radius:5px;padding:9px 16px;font-size:12px;color:var(--teal);font-weight:700;letter-spacing:1px;margin-bottom:18px;">✓ ISO 9001:2008 Certified Company</div>
+      <h2 style="font-family:'Rajdhani',sans-serif;font-size:38px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:16px;">Three Decades of <span style="color:var(--accent);">Precision</span> Engineering</h2>
+      <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:12px;">Established in 1990, Digital Electronics is a leading manufacturer and domestic supplier of digital instruments, clock systems, and display solutions. Under the proprietorship of Mr. R.K. Gupta, we have built a solid reputation for quality, reliability and innovation across India.</p>
+      <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:12px;">Our specialization spans GPS-synchronized clocks, Bank Token Display systems with voice announcement, foreign exchange and gold/silver rate displays, LED-based signage, Tower Clock installation &amp; restoration, and custom electronic components.</p>
+      <div class="ab-highlights">
+        <div class="hl-card"><div class="hl-num">1990</div><div class="hl-lbl">Year Established</div></div>
+        <div class="hl-card"><div class="hl-num">35+</div><div class="hl-lbl">Years Experience</div></div>
+        <div class="hl-card"><div class="hl-num">ISO</div><div class="hl-lbl">9001:2008 Certified</div></div>
+        <div class="hl-card"><div class="hl-num">Pan-IN</div><div class="hl-lbl">Market Presence</div></div>
+      </div>
+      <div class="cert-strip"><img src="product1_files/kvqa_logo.JPG" alt="KVQA ISO Cert"><div><div class="ct-title">Quality Certification</div><div class="ct-sub">ISO 9001:2008 · KVQA Accredited<br>Norsk Akkreditering MSYS 007</div></div></div>
+    </div>
+    <div class="about-img-wrap"><img src="product1_files/tower-clock-500x500.jpg" alt="Tower Clock"></div>
+  </div>
+  <div class="about-specs-wrap">
+    <div class="spec-box"><h3>Company Profile</h3>
+      <div class="spec-row"><span class="sk">Legal Status</span><span class="sv">Sole Proprietorship</span></div>
+      <div class="spec-row"><span class="sk">Nature of Business</span><span class="sv">Manufacturer &amp; Supplier</span></div>
+      <div class="spec-row"><span class="sk">Year Established</span><span class="sv">1990</span></div>
+      <div class="spec-row"><span class="sk">Proprietor</span><span class="sv">Mr. R.K. Gupta</span></div>
+      <div class="spec-row"><span class="sk">Employees</span><span class="sv">Up to 10</span></div>
+      <div class="spec-row"><span class="sk">Annual Turnover</span><span class="sv">Up to Rs. 1 Crore</span></div>
+      <div class="spec-row"><span class="sk">Quality Cert.</span><span class="sv">ISO 9001:2008</span></div>
+      <div class="spec-row"><span class="sk">Location</span><span class="sv">Kolkata, West Bengal</span></div>
+    </div>
+    <div class="spec-box"><h3>Industries Served</h3>
+      <div class="spec-row"><span class="sk">Banking &amp; Finance</span><span class="sv">Token systems, rate displays</span></div>
+      <div class="spec-row"><span class="sk">Process Control</span><span class="sv">Controllers, timers</span></div>
+      <div class="spec-row"><span class="sk">Industrial</span><span class="sv">Clocks, displays, weighing</span></div>
+      <div class="spec-row"><span class="sk">Telecom</span><span class="sv">Timing systems</span></div>
+      <div class="spec-row"><span class="sk">Medical</span><span class="sv">Instrumentation displays</span></div>
+      <div class="spec-row"><span class="sk">Home Automation</span><span class="sv">Smart clocks, LED</span></div>
+      <div class="spec-row"><span class="sk">Power Electronics</span><span class="sv">Custom components</span></div>
+      <div class="spec-row"><span class="sk">Public Infrastructure</span><span class="sv">Tower clocks, signage</span></div>
+    </div>
+  </div>
+  <div class="section-wrap" style="padding-top:0;">
+    <div class="section-head"><div class="section-tag">Our Clients</div><h2 class="section-title">Trusted by <span>Quality-Conscious</span> Organizations</h2></div>
+    <div class="clients-grid">
+      <div class="cbadge">A&amp;D Japan, Sector V, Gurgaon</div><div class="cbadge">CAS Weighing India Pvt. Ltd.</div><div class="cbadge">Great Electronics, Kalamandir, Kolkata</div><div class="cbadge">Hindustan Lever Limited, Haldia, WB</div><div class="cbadge">ITC, Munger</div><div class="cbadge">Jay Electronics, Jamnagar, Gujarat</div><div class="cbadge">L&amp;T, Kansbhal</div><div class="cbadge">Udyogi Plastic Ltd., Kolkata</div><div class="cbadge">DNS Technology, Orissa</div><div class="cbadge">Municipal Office, Bhutan Govt.</div>
+    </div>
+  </div>
+</div><!-- /about -->
+
+<!-- ════ PRODUCTS ════ -->
+<div class="page" id="page-products">
+  <div class="page-strip"><h1>Our <span>Products</span></h1><p>ISO-certified digital electronic instruments for banking, industry &amp; public infrastructure</p></div>
+  <div class="section-wrap">
+    <div class="products-grid">
+      <div class="pcard" onclick="gd('clocks')"><div class="pcard-img"><img src="product1_files/tower-clock-500x500.jpg" alt="Tower Clock"></div><div class="pcard-body"><div class="pcard-cat">Category 01</div><div class="pcard-name">Clocks &amp; GPS Systems</div><p class="pcard-desc">Tower clocks, GPS-synchronized master-slave networks, digital calendar clocks, world time zone displays and platform clocks.</p><ul class="pcard-feats"><li>Smart Tower Clock systems</li><li>GPS Master-Slave networks</li><li>Calendar &amp; World Clocks</li><li>Battery backup on power failure</li></ul><button class="pcard-link">View Full Details →</button></div></div>
+      <div class="pcard" onclick="gd('displays')"><div class="pcard-img"><img src="product2_files/picture-001.jpg" alt="Bank Token Display"></div><div class="pcard-body"><div class="pcard-cat">Category 02</div><div class="pcard-name">Token &amp; LED Displays</div><p class="pcard-desc">Bank token displays with voice announcement, foreign exchange rate boards, gold/silver rate displays, LED weigh-scale readouts and moving message displays.</p><ul class="pcard-feats"><li>Voice announcement &amp; alert</li><li>Foreign exchange rate boards</li><li>Gold &amp; Silver rate displays</li><li>LED moving message displays</li></ul><button class="pcard-link">View Full Details →</button></div></div>
+      <div class="pcard" onclick="gd('components')"><div class="pcard-img"><img src="product3_files/4-500x500.jpg" alt="Electronic Components"></div><div class="pcard-body"><div class="pcard-cat">Category 03</div><div class="pcard-name">Electronic Components</div><p class="pcard-desc">Custom electronic components and sub-assemblies manufactured using latest technology. Built to customer specifications for maximum durability.</p><ul class="pcard-feats"><li>CP210X USB-Serial modules</li><li>Process control components</li><li>Custom specifications</li><li>Industrial grade quality</li></ul><button class="pcard-link">View Full Details →</button></div></div>
+      <div class="pcard" onclick="gd('led')"><div class="pcard-img"><img src="product4_files/6-250x250.jpg" alt="LED Lighting"></div><div class="pcard-body"><div class="pcard-cat">Category 04</div><div class="pcard-name">LED Lighting &amp; Timers</div><p class="pcard-desc">Energy-efficient LED Bulbs, Tube Lights, Down Lights, Street Lights, Edge Lit Signs and hoarding timer controllers.</p><ul class="pcard-feats"><li>LED Bulbs, Tubes, Down Lights</li><li>LED Street Lights 10–150W</li><li>Hoarding board timers</li><li>50,000+ hour rated life</li></ul><button class="pcard-link">View Full Details →</button></div></div>
+    </div>
+    <div style="text-align:center;margin-top:48px;"><p style="color:var(--gray);font-size:14px;margin-bottom:20px;">All products are manufactured in-house and can be customized to your specifications.</p><button class="btn-primary" onclick="go('contact')">Request a Custom Quote →</button></div>
+  </div>
+</div><!-- /products -->
+
+<!-- ════ DETAIL: CLOCKS ════ -->
+<div class="page" id="page-detail-clocks">
+  <div class="detail-wrap">
+    <div class="breadcrumb"><a onclick="go('home')">Home</a><span>/</span><a onclick="go('products')">Products</a><span>/</span><span style="color:var(--white)">Clocks &amp; GPS Systems</span></div>
+    <div class="detail-grid">
+      <div>
+        <div class="detail-main-img"><img src="product1_files/tower-clock-500x500.jpg" alt="Tower Clock" id="clk-main"></div>
+        <div class="detail-thumbs">
+          <div class="dthumb active" onclick="si('clk-main','product1_files/tower-clock-500x500.jpg',this)"><img src="product1_files/tower-clock-500x500.jpg" alt="Tower Clock"></div>
+          <div class="dthumb" onclick="si('clk-main','product1_files/slave-250x250.jpg',this)"><img src="product1_files/slave-250x250.jpg" alt="GPS Slave"></div>
+          <div class="dthumb" onclick="si('clk-main','product1_files/calender-500x500.jpg',this)"><img src="product1_files/calender-500x500.jpg" alt="Calendar Clock"></div>
+          <div class="dthumb" onclick="si('clk-main','product1_files/digital-clock-250x250.jpg',this)"><img src="product1_files/digital-clock-250x250.jpg" alt="Digital Clock"></div>
+          <div class="dthumb" onclick="si('clk-main','product1_files/world_clockm.jpg',this)"><img src="product1_files/world_clockm.jpg" alt="World Clock"></div>
+          <div class="dthumb" onclick="si('clk-main','product1_files/Picture_011.jpg',this)"><img src="product1_files/Picture_011.jpg" alt="Hotel Clock"></div>
+        </div>
+      </div>
+      <div class="detail-info">
+        <span class="d-cat">Category 01 · Clocks &amp; Timing Systems</span>
+        <h1>Clocks &amp; GPS Systems</h1>
+        <p class="detail-desc">We design and manufacture Smart Tower Clocks, GPS-synchronized Master-Slave clock systems, digital calendar clocks and world time zone displays. Built with heavy-duty components for long service life, maintenance-free operation and GPS-level time accuracy — never needs manual adjustment.</p>
+        <div class="feats-label">Key Features</div>
+        <ul class="detail-feats">
+          <li>Needs less space to install</li><li>Maintenance-free operation</li>
+          <li>AC power &amp; battery backup</li><li>GPS synchronized — 100% accurate</li>
+          <li>Standalone or Master-Slave mode</li><li>Eliminates manual clock setting</li>
+          <li>Day indicator (Sun, Mon…)</li><li>Battery backup on power failure</li>
+          <li>Low power consumption</li><li>220V AC input</li>
+        </ul>
+        <div class="detail-actions"><button class="btn-primary" onclick="go('contact')">Enquire Now</button></div>
+      </div>
+    </div>
+    <div class="sub-products"><h2>All Clock <span>Products</span></h2>
+      <div class="sub-grid">
+        <div class="sub-card"><div class="sub-card-img"><img src="product1_files/tower-clock-500x500.jpg" alt="Tower Clock"></div><div class="sub-card-body"><div class="sub-card-name">Tower Clock (Smart Clock)</div><div class="sub-card-desc">Heavy-duty tower clock for buildings, temples and institutions. GPS or standalone.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product1_files/slave-250x250.jpg" alt="GPS Slave Clock"></div><div class="sub-card-body"><div class="sub-card-name">GPS Master-Slave Clock</div><div class="sub-card-desc">GPS-synchronized master with multiple slave clocks for hospitals, offices and factories.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product1_files/calender-500x500.jpg" alt="Calendar Clock"></div><div class="sub-card-body"><div class="sub-card-name">Digital Calendar Clock</div><div class="sub-card-desc">Shows Day, Month, Year, Hour, Minute, Second in large bright LED digits.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product1_files/world_clockm.jpg" alt="World Clock"></div><div class="sub-card-body"><div class="sub-card-name">World Time Zone Display</div><div class="sub-card-desc">Multi-city time zone display for banks, hotels and corporate offices.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product1_files/Picture_011.jpg" alt="Hotel Clock"></div><div class="sub-card-body"><div class="sub-card-name">Hotel Multi-Zone Clock</div><div class="sub-card-desc">Custom LED world clock panels showing multiple city times, date and day simultaneously.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product1_files/digital-clock-250x250.jpg" alt="Digital Wall Clock"></div><div class="sub-card-body"><div class="sub-card-name">Digital Wall Clock</div><div class="sub-card-desc">Clean large-digit digital wall clock for offices, warehouses and production floors.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ DETAIL: DISPLAYS ════ -->
+<div class="page" id="page-detail-displays">
+  <div class="detail-wrap">
+    <div class="breadcrumb"><a onclick="go('home')">Home</a><span>/</span><a onclick="go('products')">Products</a><span>/</span><span style="color:var(--white)">Token &amp; LED Displays</span></div>
+    <div class="detail-grid">
+      <div>
+        <div class="detail-main-img"><img src="product2_files/picture-001.jpg" alt="Bank Token Display" id="disp-main"></div>
+        <div class="detail-thumbs">
+          <div class="dthumb active" onclick="si('disp-main','product2_files/picture-001.jpg',this)"><img src="product2_files/picture-001.jpg" alt="Token Display"></div>
+          <div class="dthumb" onclick="si('disp-main','product2_files/EXchangeratem.JPG',this)"><img src="product2_files/EXchangeratem.JPG" alt="Exchange Rate Board"></div>
+          <div class="dthumb" onclick="si('disp-main','product2_files/IMG-20140407-WA0000.jpg',this)"><img src="product2_files/IMG-20140407-WA0000.jpg" alt="Gold Rate Board"></div>
+          <div class="dthumb" onclick="si('disp-main','product2_files/led-display-for-weigh-scale-500x500.jpg',this)"><img src="product2_files/led-display-for-weigh-scale-500x500.jpg" alt="Weigh Scale"></div>
+          <div class="dthumb" onclick="si('disp-main','product2_files/2-250x250.jpg',this)"><img src="product2_files/2-250x250.jpg" alt="LED Moving Display"></div>
+          <div class="dthumb" onclick="si('disp-main','product2_files/3-500x500.jpg',this)"><img src="product2_files/3-500x500.jpg" alt="LED Edge Lit Sign"></div>
+          <div class="dthumb" onclick="si('disp-main','product2_files/AutomaticTimerlo.jpg',this)"><img src="product2_files/AutomaticTimerlo.jpg" alt="Timer"></div>
+          <div class="dthumb" onclick="si('disp-main','product2_files/7-250x250.jpg',this)"><img src="product2_files/7-250x250.jpg" alt="Display Module"></div>
+        </div>
+      </div>
+      <div class="detail-info">
+        <span class="d-cat">Category 02 · Displays &amp; Signage</span>
+        <h1>Token &amp; LED Display Systems</h1>
+        <p class="detail-desc">Our display range covers Bank Token Queue Management systems with voice announcement/alert, foreign exchange rate boards, Gold &amp; Silver rate displays, LED weigh-scale readouts, LED moving message displays and hoarding timers. All products are fully indigenous and field-repairable.</p>
+        <div class="feats-label">Key Products &amp; Features</div>
+        <ul class="detail-feats">
+          <li>Bank Token Display + Voice Alert</li><li>Foreign Exchange Rate Board</li>
+          <li>Gold &amp; Silver Rate Display</li><li>LED Display for Weigh Scale</li>
+          <li>LED Moving Message Display</li><li>Hoarding / Sign board Timer</li>
+          <li>15A relay output, expandable</li><li>Low power, long-lasting LEDs</li>
+          <li>Custom spec on request</li><li>Fully indigenous &amp; repairable</li>
+        </ul>
+        <div class="detail-actions"><button class="btn-primary" onclick="go('contact')">Enquire Now</button></div>
+      </div>
+    </div>
+    <div class="sub-products"><h2>All Display <span>Products</span></h2>
+      <div class="sub-grid">
+        <div class="sub-card"><div class="sub-card-img"><img src="product2_files/picture-001.jpg" alt="Bank Token Display"></div><div class="sub-card-body"><div class="sub-card-name">Bank Token Display</div><div class="sub-card-desc">Queue management with voice announcement and alert for banks and service counters.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product2_files/EXchangeratem.JPG" alt="Exchange Rate Board"></div><div class="sub-card-body"><div class="sub-card-name">Foreign Exchange Rate Board</div><div class="sub-card-desc">Live buy/sell rates for USD, GBP, EUR, AUD, SGD, AED, THB with date &amp; time.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product2_files/IMG-20140407-WA0000.jpg" alt="Gold Rate Display"></div><div class="sub-card-body"><div class="sub-card-name">Gold &amp; Silver Rate Display</div><div class="sub-card-desc">24CT, Hallmark, 22CT &amp; 18CT gold rates per 10gm with silver rate and live date/time.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product2_files/led-display-for-weigh-scale-500x500.jpg" alt="Weigh Scale Display"></div><div class="sub-card-body"><div class="sub-card-name">LED Display for Weigh Scale</div><div class="sub-card-desc">Large bright LED readout panels for weighbridge and industrial weighing applications.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product2_files/2-250x250.jpg" alt="LED Moving Display"></div><div class="sub-card-body"><div class="sub-card-name">LED Moving Message Display</div><div class="sub-card-desc">Scrolling LED message boards for shops, offices and public spaces. Customizable text.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product2_files/3-500x500.jpg" alt="LED Edge Lit Sign"></div><div class="sub-card-body"><div class="sub-card-name">LED Edge Lit Sign</div><div class="sub-card-desc">Attractive illuminated acrylic signage with LED edge lighting for branding and information.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product2_files/AutomaticTimerlo.jpg" alt="Timer"></div><div class="sub-card-body"><div class="sub-card-name">Hoarding / Sign Board Timer</div><div class="sub-card-desc">Automatic ON/OFF timer for hoarding boards and signage. 15A relay, cyclic timer.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product2_files/7-250x250.jpg" alt="Display Module"></div><div class="sub-card-body"><div class="sub-card-name">Custom Display Module</div><div class="sub-card-desc">Custom LED display panels built to any specification, size or configuration on request.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ DETAIL: COMPONENTS ════ -->
+<div class="page" id="page-detail-components">
+  <div class="detail-wrap">
+    <div class="breadcrumb"><a onclick="go('home')">Home</a><span>/</span><a onclick="go('products')">Products</a><span>/</span><span style="color:var(--white)">Electronic Components</span></div>
+    <div class="detail-grid">
+      <div>
+        <div class="detail-main-img"><img src="product3_files/4-500x500.jpg" alt="Electronic Components" id="comp-main"></div>
+        <div class="detail-thumbs">
+          <div class="dthumb active" onclick="si('comp-main','product3_files/4-500x500.jpg',this)"><img src="product3_files/4-500x500.jpg" alt="Components Range"></div>
+          <div class="dthumb" onclick="si('comp-main','product3_files/0005985_breakout_board_for_cp2102_usb_to_serial.jpeg',this)"><img src="product3_files/0005985_breakout_board_for_cp2102_usb_to_serial.jpeg" alt="CP210X Board"></div>
+        </div>
+      </div>
+      <div class="detail-info">
+        <span class="d-cat">Category 03 · Electronic Components</span>
+        <h1>Electronic Components</h1>
+        <p class="detail-desc">We manufacture an exclusive range of electronic components and sub-assemblies using the latest technology, ensuring outstanding performance and durability. All equipment can be manufactured in accordance with specifications provided by our customers. We also supply CP210X USB-to-Serial breakout boards with full Silicon Lab driver support.</p>
+        <div class="feats-label">Key Features</div>
+        <ul class="detail-feats">
+          <li>Wide range of components</li><li>Latest manufacturing technology</li>
+          <li>Built to customer specs</li><li>Outstanding durability</li>
+          <li>CP210X USB-Serial modules</li><li>Process control boards</li>
+          <li>Industrial grade quality</li><li>Tested &amp; quality-assured</li>
+        </ul>
+        <div style="background:rgba(0,194,212,.05);border:1px solid rgba(0,194,212,.18);border-radius:8px;padding:16px;margin-bottom:24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <img src="product3_files/0005985_breakout_board_for_cp2102_usb_to_serial.jpeg" style="width:90px;height:68px;object-fit:cover;border-radius:6px;flex-shrink:0;" alt="CP210X Board">
+          <div><div style="font-family:'Oswald',sans-serif;font-size:12px;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;">CP210X Driver Download</div><p style="font-size:12px;color:var(--gray);line-height:1.6;margin-bottom:6px;">Silicon Lab VCP driver for Windows:</p><a href="https://www.silabs.com/Support%20Documents/Software/CP210x_VCP_Windows.zip" style="color:var(--accent);font-size:12px;word-break:break-all;">CP210x_VCP_Windows.zip</a></div>
+        </div>
+        <div class="detail-actions"><button class="btn-primary" onclick="go('contact')">Enquire Now</button></div>
+      </div>
+    </div>
+    <div class="sub-products"><h2>Component <span>Range</span></h2>
+      <div class="sub-grid">
+        <div class="sub-card"><div class="sub-card-img"><img src="product3_files/4-500x500.jpg" alt="Components Range"></div><div class="sub-card-body"><div class="sub-card-name">Full Components Range</div><div class="sub-card-desc">Capacitors, resistors, LEDs, transistors, ICs, relays, sensors — all sourced and tested for industrial applications.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product3_files/0005985_breakout_board_for_cp2102_usb_to_serial.jpeg" alt="CP210X Board"></div><div class="sub-card-body"><div class="sub-card-name">CP210X USB-to-Serial Board</div><div class="sub-card-desc">Breakout board for CP2102 USB to UART bridge. Used for PC connectivity and configuration in our products.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img" style="background:var(--navy3);display:flex;align-items:center;justify-content:center;font-size:38px;">🔌</div><div class="sub-card-body"><div class="sub-card-name">Custom Sub-Assemblies</div><div class="sub-card-desc">PCB sub-assemblies and electronic modules built to customer-provided schematics and specifications.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img" style="background:var(--navy3);display:flex;align-items:center;justify-content:center;font-size:38px;">⚙️</div><div class="sub-card-body"><div class="sub-card-name">Process Control Components</div><div class="sub-card-desc">Specialized components for process control, industrial automation and power electronics.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ DETAIL: LED LIGHTING ════ -->
+<div class="page" id="page-detail-led">
+  <div class="detail-wrap">
+    <div class="breadcrumb"><a onclick="go('home')">Home</a><span>/</span><a onclick="go('products')">Products</a><span>/</span><span style="color:var(--white)">LED Lighting &amp; Timers</span></div>
+    <div class="detail-grid">
+      <div>
+        <div class="detail-main-img"><img src="product4_files/6-250x250.jpg" alt="LED Lighting Range" id="led-main"></div>
+        <div class="detail-thumbs">
+          <div class="dthumb active" onclick="si('led-main','product4_files/6-250x250.jpg',this)"><img src="product4_files/6-250x250.jpg" alt="LED Range"></div>
+          <div class="dthumb" onclick="si('led-main','product4_files/Bulb.JPG',this)"><img src="product4_files/Bulb.JPG" alt="LED Bulb"></div>
+          <div class="dthumb" onclick="si('led-main','product4_files/downlight.JPG',this)"><img src="product4_files/downlight.JPG" alt="LED Downlight"></div>
+          <div class="dthumb" onclick="si('led-main','product4_files/streetlight.JPG',this)"><img src="product4_files/streetlight.JPG" alt="LED Street Light"></div>
+          <div class="dthumb" onclick="si('led-main','product4_files/tube.JPG',this)"><img src="product4_files/tube.JPG" alt="LED Tube Light"></div>
+        </div>
+      </div>
+      <div class="detail-info">
+        <span class="d-cat">Category 04 · LED Lighting &amp; Timers</span>
+        <h1>LED Lighting &amp; Timers</h1>
+        <p style="font-size:12.5px;color:var(--gray);margin-bottom:14px;">Item Code: DELED001 &nbsp;·&nbsp; MoserBaer Make &amp; Others</p>
+        <p class="detail-desc">We supply and install a comprehensive range of energy-efficient LED lighting solutions including LED Bulbs, Tube Lights, Down Lights, Street Lights and Edge Lit Signs. We also manufacture intelligent timer systems for hoarding boards and sign boards with cyclic ON/OFF control and 15A relay output.</p>
+        <div class="feats-label">Key Features</div>
+        <ul class="detail-feats">
+          <li>LED Bulbs — 7W, 520 lm</li><li>LED Tube Lights — 15W, T8</li>
+          <li>LED Down Lights — 6W to 15W</li><li>LED Street Lights — 10W to 150W</li>
+          <li>LED Edge Lit Sign boards</li><li>Hoarding / Sign board timers</li>
+          <li>Cyclic ON/OFF programming</li><li>15A relay output, expandable</li>
+          <li>50,000+ hour rated life</li><li>Fully indigenous &amp; repairable</li>
+        </ul>
+        <div class="detail-actions"><button class="btn-primary" onclick="go('contact')">Enquire Now</button></div>
+      </div>
+    </div>
+    <div class="sub-products"><h2>All LED <span>Products</span></h2>
+      <div class="sub-grid">
+        <div class="sub-card"><div class="sub-card-img"><img src="product4_files/6-250x250.jpg" alt="LED Range"></div><div class="sub-card-body"><div class="sub-card-name">Full LED Lighting Range</div><div class="sub-card-desc">Complete range: COB strips, spot lights, candle bulbs, GLS bulbs and down-lights for every application.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product4_files/Bulb.JPG" alt="LED Bulb"></div><div class="sub-card-body"><div class="sub-card-name">LED Bulb (7W)</div><div class="sub-card-desc">MoserBaer 7W LED Cool White Bulb. 520 lm, B22d, 140–270V, 50,000 hrs life, 1-year warranty. CRI 80.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product4_files/downlight.JPG" alt="LED Down Light"></div><div class="sub-card-body"><div class="sub-card-name">LED Down Lights (6W–15W)</div><div class="sub-card-desc">MoserBaer LED Panel Down Lights — 6W, 9W, 12W &amp; 15W. Round &amp; square. 230V, 6500K, 50,000 hrs.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product4_files/streetlight.JPG" alt="LED Street Light"></div><div class="sub-card-body"><div class="sub-card-name">LED Street Lights (10W–150W)</div><div class="sub-card-desc">MoserBaer LED Street Lights — 10W to 150W. 140–270V AC, 6500K, CRI 70, batwing beam, 50,000+ hrs.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img"><img src="product4_files/tube.JPG" alt="LED Tube Light"></div><div class="sub-card-body"><div class="sub-card-name">LED Tube Light (15W)</div><div class="sub-card-desc">MoserBaer 15W LED Tube Lyra — 1500 lm, T8 1200mm, 140–270V, 50,000 hrs, 1-year warranty.</div></div></div>
+        <div class="sub-card"><div class="sub-card-img" style="background:var(--navy3);display:flex;align-items:center;justify-content:center;font-size:38px;">⏱️</div><div class="sub-card-body"><div class="sub-card-name">Hoarding / Sign Board Timer</div><div class="sub-card-desc">Automatic ON/OFF timer for hoarding boards and sign boards. Cyclic timer with 15A relay output.</div></div></div>
+      </div>
+      <div style="margin-top:48px;overflow-x:auto;">
+        <h2 style="font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;color:var(--white);margin-bottom:20px;">Technical <span style="color:var(--accent);">Specifications</span></h2>
+        <table class="spec-table">
+          <thead><tr><th>Product</th><th>Wattage</th><th>Lumens</th><th>Supply Voltage</th><th>Life (Hrs)</th></tr></thead>
+          <tbody>
+            <tr><td>LED Bulb</td><td>7W</td><td>520 lm</td><td>140–270V</td><td class="hi">50,000</td></tr>
+            <tr><td>LED Tube Light</td><td>15W</td><td>1,500 lm</td><td>140–270V</td><td class="hi">50,000</td></tr>
+            <tr><td>LED Down Light 6W</td><td>6W</td><td>450 lm</td><td>230V</td><td class="hi">50,000</td></tr>
+            <tr><td>LED Down Light 9W</td><td>9W</td><td>675 lm</td><td>230V</td><td class="hi">50,000</td></tr>
+            <tr><td>LED Down Light 15W</td><td>15W</td><td>1,150 lm</td><td>230V</td><td class="hi">50,000</td></tr>
+            <tr><td>LED Street Light 10W</td><td>10W</td><td>750 lm</td><td>140–270V</td><td class="hi">&gt;50,000</td></tr>
+            <tr><td>LED Street Light 100W</td><td>100W</td><td>7,500 lm</td><td>140–270V</td><td class="hi">&gt;50,000</td></tr>
+            <tr><td>LED Street Light 150W</td><td>150W</td><td>11,250 lm</td><td>140–270V</td><td class="hi">&gt;50,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ CONTACT ════ -->
+<div class="page" id="page-contact">
+  <div class="page-strip"><h1>Contact <span>Us</span></h1><p>Enquiries, custom quotes and technical questions — we respond promptly</p></div>
+  <div class="contact-layout">
+    <div class="contact-info">
+      <h2>Get In <span>Touch</span></h2>
+      <p class="ci-sub">Reach out to Mr. R.K. Gupta directly for product enquiries, custom specifications, pricing and after-sales service.</p>
+      <div class="ci-item"><div class="ci-icon">👤</div><div class="ci-text"><h4>Contact Person</h4><p>Mr. R. K. Gupta</p></div></div>
+      <div class="ci-item"><div class="ci-icon">📞</div><div class="ci-text"><h4>Phone — Tap to Call</h4><p><a href="tel:+919830213946">+91 9830213946</a></p></div></div>
+      <div class="ci-item"><div class="ci-icon">📧</div><div class="ci-text"><h4>Email — Tap to Email</h4><p><a href="mailto:rkgupta@digitalelectronics-in.com">rkgupta@digitalelectronics-in.com</a><br><a href="mailto:info@digitalelectronics-in.com">info@digitalelectronics-in.com</a></p></div></div>
+      <div class="ci-item"><div class="ci-icon">🏠</div><div class="ci-text"><h4>Head Office</h4><p>No. 1, Natun Diyara, Nayabad, Panchpota,<br>Near Banspul, Near Jay Ma Tara Builder,<br>Garia, Kolkata, West Bengal – 700 150</p></div></div>
+      <div class="ci-item"><div class="ci-icon">🏢</div><div class="ci-text"><h4>Working Office</h4><p style="background:rgba(232,160,32,.09);border:1px solid rgba(232,160,32,.22);border-radius:5px;padding:9px 12px;margin-top:6px;">45, Shrinagar Main Road,<br>Near Garia Railway Station,<br>Kolkata – 700 094</p></div></div>
+      <div class="hours-box"><h4>Working Hours</h4>
+        <div class="hr-row"><span class="hr-day">Monday – Saturday</span><span class="hr-time">11:00 AM – 9:00 PM</span></div>
+        <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">11:00 AM – 6:00 PM</span></div>
+      </div>
+    </div>
+    <div class="cf-wrap">
+      <h3>Send Us a Message</h3>
+      <p class="cf-sub">Fill in the form and click Send — your email app will open with the message ready to send to us.</p>
+      <div class="form-row">
+        <div class="form-group"><label>Your Name *</label><input type="text" id="f-name" placeholder="Full name"></div>
+        <div class="form-group"><label>Company Name</label><input type="text" id="f-company" placeholder="Organization"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Email Address *</label><input type="email" id="f-email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" id="f-phone" placeholder="+91 XXXXXXXXXX"></div>
+      </div>
+      <div class="form-group"><label>Product Interest</label>
+        <select id="f-product">
+          <option value="">Select a product category…</option>
+          <option>Clocks &amp; GPS Systems</option><option>Token &amp; LED Display Systems</option>
+          <option>Electronic Components</option><option>LED Lighting &amp; Timers</option>
+          <option>Tower Clock Installation / Repair</option><option>Custom / Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Your Message *</label><textarea id="f-message" placeholder="Describe your requirement, specification or question…"></textarea></div>
+      <button class="form-submit" onclick="sendMail()">📩 Send Message via Email</button>
+      <p class="form-note">ℹ️ Clicking Send will open your email application (Gmail / Outlook / etc.) with this message pre-filled, addressed to <strong>rkgupta@digitalelectronics-in.com</strong>. Simply press Send in your email app to complete your enquiry.</p>
+      <div class="form-success" id="form-success">✓ Your email app has opened with the message ready. Please click Send in your email app to complete your enquiry.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="fb-name"><span>Digital</span> Electronics</div>
+      <div class="fb-cert">ISO 9001:2008 Certified · Est. 1990 · Kolkata</div>
+      <p class="fb-desc">Manufacturers and suppliers of GPS Clocks, Tower Clocks, Bank Token Displays, Exchange Rate Displays, LED Lighting and Electronic Components. Tower Clock installation, restoration &amp; repair services also available.</p>
+    </div>
+    <div class="fc"><h4>Quick Links</h4>
+      <a onclick="go('home')">Home</a>
+      <a onclick="go('about')">About Us</a>
+      <a onclick="go('products')">Products</a>
+      <a onclick="go('contact')">Contact Us</a>
+    </div>
+    <div class="fc"><h4>Products</h4>
+      <a onclick="gd('clocks')">Clocks &amp; GPS Systems</a>
+      <a onclick="gd('displays')">Token &amp; LED Displays</a>
+      <a onclick="gd('components')">Electronic Components</a>
+      <a onclick="gd('led')">LED Lighting &amp; Timers</a>
+    </div>
+    <div class="fc"><h4>Contact</h4>
+      <a href="tel:+919830213946">📞 +91 9830213946</a>
+      <a href="mailto:rkgupta@digitalelectronics-in.com">📧 rkgupta@digitalelectronics-in.com</a>
+      <p>📍 Garia, Kolkata – 700 150</p>
+      <p>🕐 Mon–Sat: 11AM–9PM</p>
+      <p>🕐 Sunday: 11AM–6PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Digital Electronics. All Rights Reserved.</span>
+    <span>Kolkata, West Bengal, India &nbsp;·&nbsp; <a href="tel:+919830213946" style="color:var(--accent);">+91 9830213946</a></span>
+  </div>
+</footer>
+
+<script>
+/* ── Page navigation ── */
+function go(name){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var pg=document.getElementById('page-'+name);
+  if(pg)pg.classList.add('active');
+  setNav(name);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function gd(cat){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var pg=document.getElementById('page-detail-'+cat);
+  if(pg)pg.classList.add('active');
+  setNav('products');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setNav(name){
+  ['home','about','products','contact'].forEach(function(n){
+    var a=document.getElementById('nl-'+n);var b=document.getElementById('ml-'+n);
+    if(a)a.classList.remove('active');if(b)b.classList.remove('active');
+  });
+  var a=document.getElementById('nl-'+name);var b=document.getElementById('ml-'+name);
+  if(a)a.classList.add('active');if(b)b.classList.add('active');
+}
+
+/* ── Hamburger ── */
+function toggleMenu(){
+  document.getElementById('hbg').classList.toggle('open');
+  document.getElementById('mmenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('hbg').classList.remove('open');
+  document.getElementById('mmenu').classList.remove('open');
+}
+
+/* ── Image switcher ── */
+function si(id,src,thumb){
+  var img=document.getElementById(id);
+  if(img){img.style.opacity='0';setTimeout(function(){img.src=src;img.style.opacity='1';},180);}
+  thumb.closest('.detail-thumbs').querySelectorAll('.dthumb').forEach(function(t){t.classList.remove('active');});
+  thumb.classList.add('active');
+}
+
+/* ── Contact form → mailto ── */
+function sendMail(){
+  var name=document.getElementById('f-name').value.trim();
+  var email=document.getElementById('f-email').value.trim();
+  var company=document.getElementById('f-company').value.trim();
+  var phone=document.getElementById('f-phone').value.trim();
+  var product=document.getElementById('f-product').value;
+  var message=document.getElementById('f-message').value.trim();
+  if(!name){alert('Please enter your name.');return;}
+  if(!email){alert('Please enter your email address.');return;}
+  if(!message){alert('Please enter your message.');return;}
+  var subj='Website Enquiry from '+name+(product?' – '+product:'');
+  var body='Name: '+name+'\n';
+  if(company)body+='Company: '+company+'\n';
+  body+='Email: '+email+'\n';
+  if(phone)body+='Phone: '+phone+'\n';
+  if(product)body+='Product Interest: '+product+'\n';
+  body+='\nMessage:\n'+message+'\n\n---\nSent from Digital Electronics website';
+  window.location.href='mailto:rkgupta@digitalelectronics-in.com'
+    +'?subject='+encodeURIComponent(subj)
+    +'&body='+encodeURIComponent(body);
+  var s=document.getElementById('form-success');
+  s.style.display='block';
+  setTimeout(function(){s.style.display='none';},7000);
+}
+
+/* ── Scroll reveal ── */
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
+  });
+},{threshold:0.08});
+document.querySelectorAll('.pcard,.feat-item,.ci-item,.cbadge,.hl-card,.sub-card,.cpill').forEach(function(el){
+  el.style.opacity='0';el.style.transform='translateY(18px)';
+  el.style.transition='opacity 0.5s ease,transform 0.5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
